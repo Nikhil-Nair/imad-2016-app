@@ -6,6 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 var articleOne = {
     title:'Article One',
+    heading:'Article One',
     date:'Sept 5,2016',
     content:`<p>
             Im not sure what to put here.So I Just put that,many times over!!Im  not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
