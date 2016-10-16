@@ -4,7 +4,9 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne = {
+
+var articles ={
+    article-one :{
     title:'Article One',
     heading:'Article One',
     date:'Sept 5,2016',
@@ -17,6 +19,36 @@ var articleOne = {
             <p>
             Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
             </p>`
+},
+    article-two : {
+        title:'Article Two',
+        heading:'Article Two',
+        date:'Sept 10,2016',
+        content:`<p>
+                Im not sure what to put here.So I Just put that,many times over!!Im  not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
+                </p>
+                <p>
+                Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
+                </p>
+                <p>
+                Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
+                </p>`
+    },
+    article-three : {
+        title:'Article Three',
+        heading:'Article Three',
+        date:'Sept 15,2016',
+        content:`<p>
+                Im not sure what to put here.So I Just put that,many times over!!Im  not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
+                </p>
+                <p>
+                Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
+                </p>
+                <p>
+                Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!Im not sure what to put here.So I Just put that,many times over!!
+                </p>`
+    }
+
 };
 
 function createTemplate(data){
@@ -62,16 +94,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one' , function(req,res){
-    res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two' , function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three' , function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/articleName' , function(req,res){
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
