@@ -10,4 +10,6 @@ element.innerHTML = 'New-Value';
 //Moving Madi!!!!
 
 var img = document.getElementById('madi');
-img.style.marginLeft = '100px';
+img.onclick = function(){
+    img.style.marginLeft = '100px';    
+}
